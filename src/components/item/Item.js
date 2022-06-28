@@ -4,17 +4,19 @@ import "./Item.css";
 const Item = ({ card }) => {
   const [showLogo, setShowLogo] = useState(true);
 
+  const { name, img, infos } = card;
+
   return (
     <div className="card" onClick={() => setShowLogo(!showLogo)}>
       {showLogo ? (
-        <>
-          <img className="card-logo" src={card.img} alt="logo" />
-          <h3 className="card-title">{card.name}</h3>
-        </>
+        <div>
+          <img className="card-logo" src={img} alt="logo" />
+          <h3 className="card-title">{name}</h3>
+        </div>
       ) : (
         <ul className="list">
-          {card.infos.map((optelement, i) => {
-            return <li key={i}>{optelement}</li>;
+          {infos.map((element, i) => {
+            return <li key={i}>{element}</li>;
           })}
         </ul>
       )}
